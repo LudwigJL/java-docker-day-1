@@ -33,7 +33,7 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<Response<?>> createMovie(@RequestBody Student student){
+    public ResponseEntity<Response<?>> createStudent(@RequestBody Student student){
 
         if (student.getFirstName() == null || student.getLastName() == null ||
                 student.getDateOfBirth() == null){
@@ -53,7 +53,7 @@ public class StudentController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Response<?>> updateMovie(@PathVariable int id, @RequestBody Student student){
+    public ResponseEntity<Response<?>> updateStudent(@PathVariable int id, @RequestBody Student student){
         if (student.getFirstName() == null || student.getLastName() == null ||
                 student.getDateOfBirth() == null){
             ErrorResponse error = new ErrorResponse();
@@ -86,7 +86,7 @@ public class StudentController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Response<?>> deleteMovie(@PathVariable int id){
+    public ResponseEntity<Response<?>> deleteStudent(@PathVariable int id){
 
        Student studentToDelete = this.studentRepository.findById(id).orElse(null);
        if (studentToDelete == null){

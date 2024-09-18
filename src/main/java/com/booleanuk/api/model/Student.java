@@ -1,11 +1,16 @@
 package com.booleanuk.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "students")
 public class Student {
@@ -32,8 +37,9 @@ public class Student {
     @Column
     private String avgGrade;
 
-    public Student() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
 
     public Student(int id) {
         this.id = id;
@@ -48,5 +54,7 @@ public class Student {
         this.avgGrade = avgGrade;
     }
 
-
+    public void setCourse(Course course) {
+        this.course = course;
+    }
 }
